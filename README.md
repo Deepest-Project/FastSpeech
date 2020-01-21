@@ -1,5 +1,5 @@
 # FastSpeech
-Implementation of ["FastSpeech: Fast, Robust and Controllable Text to Speech"](FastSpeech: Fast, Robust and Controllable Text to Speech)
+Implementation of ["FastSpeech: Fast, Robust and Controllable Text to Speech"](https://arxiv.org/abs/1905.09263)
 
 ## Training  
 0. Set `data_path` in `hparams.py` as the LJSpeech folder  
@@ -15,4 +15,4 @@ Implementation of ["FastSpeech: Fast, Robust and Controllable Text to Speech"](F
 <img src="figures/val_plots.JPG" height="300">
 
 ## Audio Samples    
-You can hear the audio samples [here](https://deepest-project.github.io/Transformer-TTS/)
+You can hear the audio samples [here](https://deepest-project.github.io/FastSpeech/)
