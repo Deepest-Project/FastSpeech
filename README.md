@@ -2,14 +2,17 @@
 Implementation of ["FastSpeech: Fast, Robust and Controllable Text to Speech"](FastSpeech: Fast, Robust and Controllable Text to Speech)
 
 ## Training  
-0. `python train.py --gpu='0'`
+0. Set `data_path` in `hparams.py` as the LJSpeech folder  
+1. Set `teacher_dir` in `hparams.py` as the data directory where the alignments and melspectrogram targets are saved  
+2. Set `teacer_model` as the pre-trained [transfomer-tts model](https://github.com/Deepest-Project/Transformer-TTS) for pretrained_embedding
+3. `python train.py --gpu='0'`  
 
+## Training curves (orange: batch_size:64 / blue: batch_size:32)  
+<img src="figures/train_loss.JPG" height="200"> <img src="figures/val_loss.JPG" height="200">  
 
-## Training curve  
-
+## Training plots (orange: batch_size:64 / blue: batch_size:32)  
+<img src="figures/train_plots.JPG" height="300">
+<img src="figures/val_plots.JPG" height="300">
 
 ## Audio Samples    
-
-
-## Notice  
-1. I notice that the validation loss is increased and converged during the training, but the result is getting better.  
+You can hear the audio samples [here](https://deepest-project.github.io/Transformer-TTS/)
