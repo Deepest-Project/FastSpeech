@@ -19,16 +19,17 @@ def load_filepaths_and_text(metadata, teacher_path, split="|"):
     return filepaths_and_text
 
 
-class TextMelLoader(torch.utils.data.Dataset):
+class TextMelSet(torch.utils.data.Dataset):
     def __init__(self, audiopaths_and_text, hparams):
         self.audiopaths_and_text = load_filepaths_and_text(audiopaths_and_text, hparams.teacher_dir)
         random.seed(1234)
         random.shuffle(self.audiopaths_and_text)
+        self.data_type=hparams.data_type
 
     def get_mel_text_pair(self, audiopath_and_text):
         # separate filename and text
         file_name = audiopath_and_text[0][:10]
-        seq = os.path.join(hparams.data_path, 'sequence')
+        seq = os.path.join(hparams.data_path, self.data_type)
         mel = os.path.join(hparams.data_path, 'melspectrogram')
             
         with open(f'{seq}/{file_name}_sequence.pkl', 'rb') as f:
