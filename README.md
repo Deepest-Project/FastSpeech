@@ -1,18 +1,15 @@
 # FastSpeech
 Implementation of ["FastSpeech: Fast, Robust and Controllable Text to Speech"](https://arxiv.org/abs/1905.09263)  
   
-(2020/02/10)  
-- I was able to finish the implementation of [Transformer-TTS](https://github.com/Deepest-Project/Transformer-TTS) by completing the Stop token prediction and remove the concatenation of inputs and outputs of multihead attention.  
-- However, the alignments of the implementation are less diagonal, so it can not generate proper alignments for fastspeech.  
-- As a result, I failed to train the fastspeech with the new transformer-tts implementation :(  
-
 ## Training  
 0. Set `data_path` in `hparams.py` as the LJSpeech folder  
 1. Set `teacher_dir` in `hparams.py` as the data directory where the alignments and melspectrogram targets are saved  
-2. Set `teacer_model` as the pre-trained [transfomer-tts model](https://github.com/Deepest-Project/Transformer-TTS) for pretrained_embedding
-3. `python train.py --gpu='0'`  
+2. Put checkpoint of the pre-trained transformer-tts (weights of the embedding/encoder layers are used)  
+3. `python train.py`  
 
-## Training curves (orange:  / blue: )  
+## Training curves (orange: character  / blue: phoneme)  
+##### The size of the train dataset is different because transformer-tts trained with phoneme shows more diagonal attention  
+##### train:val:test=8:1:1, total => character:1126 / phoneme:3412  
 <img src="figures/duration_loss.JPG" height="200">  
 <img src="figures/train_loss.JPG" height="200">  
 <img src="figures/val_loss.JPG" height="200">  
