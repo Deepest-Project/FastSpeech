@@ -7,7 +7,9 @@ Implementation of ["FastSpeech: Fast, Robust and Controllable Text to Speech"](h
 2. Set `teacer_model` as the pre-trained [transfomer-tts model](https://github.com/Deepest-Project/Transformer-TTS) for pretrained_embedding
 3. `python train.py --gpu='0'`  
 
-## Training curves (orange:  / blue: )  
+## Training curves (orange: character  / blue: phoneme)  
+### The size of the train dataset is different because transformer-tts trained with phoneme shows more diagonal attention  
+### train/val/test (8:1:1) total => character:1126 / phoneme:3412  
 <img src="figures/duration_loss.JPG" height="200">  
 <img src="figures/train_loss.JPG" height="200">  
 <img src="figures/val_loss.JPG" height="200">  
