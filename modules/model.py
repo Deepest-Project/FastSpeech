@@ -160,7 +160,7 @@ class Model(nn.Module):
             
         ### Duration Predictor ###
         durations = self.Duration(hidden_states.permute(1,2,0))
-        hidden_states_expanded = self.LR(hidden_states, durations, alpha)
+        hidden_states_expanded = self.LR(hidden_states, durations, alpha, inference=True)
         hidden_states_expanded += self.alpha2*self.pe[:hidden_states_expanded.size(0)].unsqueeze(1)
         mel_mask = text.new_zeros(1, hidden_states_expanded.size(0)).to(torch.bool)
         
@@ -185,10 +185,11 @@ class Model(nn.Module):
         return durations
     
     
-    def LR(self, hidden_states, durations, alpha=1.0):
+    def LR(self, hidden_states, durations, alpha=1.0, inference=False):
         L, B, D = hidden_states.size()
         durations = torch.round(durations*alpha).to(torch.long)
-        durations[durations<=0]=1
+        if inference:
+            durations[durations<=0]=1
         T=int(torch.sum(durations, dim=-1).max().item())
         expanded = hidden_states.new_zeros(T, B, D)
         
