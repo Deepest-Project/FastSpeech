@@ -5,7 +5,7 @@ Implementation of ["FastSpeech: Fast, Robust and Controllable Text to Speech"](h
 0. Set `data_path` in `hparams.py` as the LJSpeech folder  
 1. Set `teacher_dir` in `hparams.py` as the data directory where the alignments and melspectrogram targets are saved  
 2. Put checkpoint of the pre-trained transformer-tts (weights of the embedding/encoder layers are used)  
-3. `python train.py --gpu='0'`  
+3. `python train.py`  
 
 ## Training curves (orange: character  / blue: phoneme)  
 ##### The size of the train dataset is different because transformer-tts trained with phoneme shows more diagonal attention  
